@@ -1,0 +1,348 @@
+<!---------- 
+After 6th hour of coding, I still have issues with media queries. I tried multiple solutions and every
+one of them failed. I tried setting display: flex; for parrent element, it failed. Later, I tried
+grid-template-rows property, it failed too. I also went for debugging  my code to see if there is
+some typofs, but I found nothing. After that, I inspected my element and found that browser is still
+rendering display: grid; property which was not set in media queries. I need rest, because my
+brain is not functioning well and I will look for solution later.
+----------------->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>Hasan Nuhanović - Personal Resume</title>
+    <style>
+        @media (max-width: 617px) {
+            nav {
+                display: none;
+            }
+
+            #top-info {
+            width: 100%;
+            height: 80%;
+            grid: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;   
+            }
+        }
+
+        #container1 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        #container1::before {
+            content: "";
+            background-image: url(bgpharmimage.jpg);
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.25;
+        }
+
+        nav {
+            line-height: 1.5em;
+            position: relative;
+        }
+
+        nav ul {
+            text-align: center;
+        }
+
+        nav ul li {
+            text-decoration: none;
+            list-style: none;
+            display: inline-block;
+            margin-right: 60px;
+            text-transform: uppercase;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 30px;
+            font-family: 'Indie Flower', cursive;
+        }
+
+        nav ul li a:hover {
+            color: #9ad3f1;
+            transition: .25s;
+        }
+
+        #top-info {
+            width: 100%;
+            height: 80vh;
+            display: grid;
+            grid-template-columns: 2fr 0.1fr 2fr;
+            justify-items: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #top-headings,
+        .vertical-line,
+        #right-info {
+            z-index: 1;
+        }
+
+        #top-headings h1 {
+            font-size: 50px;
+            color: rgb(45, 106, 163);
+            font-family: 'Satisfy', cursive;
+        }
+
+        #top-headings h3 {
+            font-size: 20px;
+            text-transform: uppercase;
+            color: rgb(36, 136, 175);
+            font-family: 'Rock Salt', cursive;
+        }
+
+        .vertical-line {
+            border-left: 3px solid rgb(121, 172, 240);
+            height: 150px;
+        }
+
+        #right-info h5 {
+            color: rgb(121, 172, 240);
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        #right-info p {
+            color: rgb(45, 106, 163);
+            font-size: 50px;
+            font-family: 'Satisfy', cursive;
+            margin: 0;
+        }
+
+        #right-info .hire {
+            width: 130px;
+            height: 60px;
+            color: rgb(196, 26, 26);
+            font-size: 20px;
+            background-color: rgb(155, 221, 241);
+            border: 2px solid rgb(78, 53, 53);
+            border-radius: 10%;
+        }
+
+        #container2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            padding-top: 7px;
+        }
+
+        #item1 {
+            background-color: rgb(23, 140, 187);
+            color: rgb(255, 242, 242);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .profilepicture {
+            text-align: center;
+            color: rgb(255, 242, 242);
+        }
+
+        .contacts,
+        .education {
+            padding-left: 20px;
+        }
+
+        .contacts h3 {
+            text-align: center;
+        }
+
+        .contacts a {
+            color: rgb(2, 2, 92);
+        }
+
+        .education h3 {
+            text-align: center;
+        }
+
+        .education h5 {
+            color: rgb(2, 2, 92);
+            font-size: 1em;
+        }
+
+        .education p {
+            font-weight: 600;
+        }
+
+        #profilepic {
+            width: 90px;
+            height: 110px;
+            border: 0.1px solid #fff;
+            border-radius: 50%;
+        }
+
+        hr {
+            width: 210px;
+        }
+
+        #item2 {
+            background-color: rgb(254, 254, 254);
+            color: rgb(30, 50, 58);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #item2 h3 {
+            text-align: center;
+            color: rgb(23, 140, 187);
+        }
+
+        .profile,
+        .experience,
+        .skills,
+        .hobbies {
+            padding-left: 10px;
+        }
+
+        .profile {
+            padding-right: 10px;
+        }
+
+        .profile p {
+            text-align: justify;
+        }
+
+        .experience h5 {
+            color: rgb(2, 2, 92);
+            font-size: 1em;
+        }
+
+        .experience p {
+            font-weight: 600;
+        }
+
+        .skills div {
+            margin-top: 10px;
+        }
+
+        .hobbies ul li {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container1">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Bio</a></li>
+                <li><a href="#">Skills</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div id="top-info">
+            <div id="top-headings">
+                <h1>Need a pharmacist?</h1>
+                <h3>No problem!</h3>
+            </div>
+            <div class="vertical-line"></div>
+            <div id="right-info">
+                <h5>I am</h5>
+                <p>Hasan Nuhanović</p>
+                <button class="hire">Hire me!</button>
+            </div>
+        </div>
+    </div>
+    <div id="container2">
+        <div id="item1">
+            <div class="profilepicture">
+                <img id="profilepic" src="maturska.jpg" alt="#">
+                <h2>HASAN NUHANOVIĆ</h2>
+                <p>MASTER OF PHARMACY</p>
+                <hr>
+            </div>
+            <div class="contacts">
+                <h3>CONTACT INFO</h3>
+                <p>Telephone number: 062978737</p>
+                <p>E-mail : haso_nuhanovic1995@hotmail.com</p>
+                <p>G-mail : nuhanovich95@gmail.com</p>
+                <p>Facebook: <a href="#">Hasan Nuhanović</a></p>
+                <p>Location: Živinice, 75270</p>
+            </div>
+            <div class="education">
+                <h3>EDUCATION</h3>
+                <h5>2010-2014</h5>
+                <p>JU High medical school Tuzla</p>
+                <p>Pharmacy technician</p>
+                <h5>2014-2019</h5>
+                <p>JU University of Tuzla, Faculty of pharmacy</p>
+                <p>Master of pharmacy</p>
+                <h5>2022-2023</h5>
+                <p>BILD IT program Tuzla</p>
+                <p>Software developer</p>
+            </div>
+        </div>
+        <div id="item2">
+            <div class="profile">
+                <h3>PROFILE</h3>
+                <p>
+                    My name is Hasan Nuhanović. I was born 24.11.1995. in Tuzla. I graduated at University of Tuzla,
+                    Faculty of pharmacy
+                    in 2019. After graduation, I finished an internship on pharmacy "Ibn Sina" in 2020.
+                    At the moment, I am working in pharmacy "Adonis" in a city of Živinice for almost a 2 years now.
+                    I am married since september 2021. I can say that I am a person who likes to learn new things.
+                    Right now, I am attending BILD IT program in Tuzla which will help me become
+                    software developer.
+                </p>
+            </div>
+            <div class="experience">
+                <h3>EXPERIENCE</h3>
+                <h5>2020 - Present</h5>
+                <p>PZU Apoteke "Adonis" Lukavac</p>
+                <p>Master of pharmacy</p>
+            </div>
+            <div class="skills">
+                <h3>SKILLS</h3>
+                <div>
+                    <label for="checkbox1">Pharmaceutics</label>
+                    <input type="checkbox" name="pharmaceutics" id="checkbox1" checked>
+                </div>
+                <div>
+                    <label for="checkbox2">HTML/CSS</label>
+                    <input type="checkbox" name="htmlcss" id="checkbox2" checked>
+                </div>
+                <div>
+                    <label for="checkbox3">Driving licence</label>
+                    <input type="checkbox" name="drivinglicence" id="checkbox3" checked>
+                </div>
+                <div>
+                    <label for="checkbox4">English language</label>
+                    <input type="checkbox" name="english" id="checkbox4" checked>
+                </div>
+                <div>
+                    <label for="checkbox5">MS Office</label>
+                    <input type="checkbox" name="msoffice" id="checkbox5" checked>
+                </div>
+            </div>
+            <div class="hobbies">
+                <h3>HOBBIES</h3>
+                <ul>
+                    <li>Beekeeping</li>
+                    <li>Cycling</li>
+                    <li>Programming</li>
+                    <li>Football</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
